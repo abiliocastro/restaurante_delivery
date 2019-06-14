@@ -2,6 +2,7 @@ HELP.md
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 /src/main/resources/application.properties
+/images
 
 ### STS ###
 .apt_generated

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ufc.br.model.Gerente;
-import com.ufc.br.service.GerenteService;
+import com.ufc.br.services.GerenteService;
 
 @Controller
 @RequestMapping("/gerente")

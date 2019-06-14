@@ -1,4 +1,4 @@
-package com.ufc.br.service;
+package com.ufc.br.services;
 
 import java.util.List;
 

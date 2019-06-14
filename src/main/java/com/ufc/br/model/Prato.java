@@ -7,18 +7,28 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Prato {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	
+	@NotBlank(message = "Preencha o campo nome")
 	private String nome;
+	
+	@NotNull(message = "Preço não pode ser nulo")
 	private float preco;
 	
 	@ManyToMany(targetEntity = Pedido.class)
 	private Set<Pedido> pedidos;
 	
+	public long getId() {
+		return id;
+	}
+
 	public String getNome() {
 		return nome;
 	}

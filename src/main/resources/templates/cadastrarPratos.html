@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Cadastrar Pratos</title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+</head>
+<body>
+    <form action="/prato/cadastrar" method="POST" th:object="${prato}" enctype="multipart/form-data">
+		<div class="alert alert-success" role="alert" th:if="${!#strings.isEmpty(mensagem)}">
+			<span th:text="${mensagem}"></span>
+		</div>
+		<div class="alert alert-danger" role="alert" th:if="${#fields.hasAnyErrors()}">
+			<div th:each="detailedError : ${#fields.detailedErrors()}">
+				<span th:text="${detailedError.message}"></span>
+			</div>
+		</div>
+		<input type="hidden" th:field="*{id}" />
+		<label>Nome: </label><input type="text" th:field="*{nome}"><br>
+		<label>Imagem: </label><input type="file" name="imagem"><br>
+		<label>Preço: </label><input type="text" th:field="*{preco}"><br>		
+		<input type="submit" value="Cadastrar">
+	</form>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+</body>
+</html>

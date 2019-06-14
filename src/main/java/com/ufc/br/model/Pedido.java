@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Pedido {
@@ -21,6 +22,8 @@ public class Pedido {
 	private Cliente cliente;
 	@ManyToMany(targetEntity = Prato.class)
 	private Set<Prato> pratos;
+	@OneToMany(targetEntity = Item.class)
+	private Set<Item> itens;
 	
 	public String getStatus() {
 		return status;
@@ -60,6 +63,14 @@ public class Pedido {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+
+	public Set<Item> getItens() {
+		return itens;
+	}
+
+	public void setItens(Set<Item> itens) {
+		this.itens = itens;
 	}
 	
 	
