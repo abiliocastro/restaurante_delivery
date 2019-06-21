@@ -37,6 +37,7 @@ public class PratoController {
 		}
 		pratoService.cadastrar(prato, imagem);
 		mv.addObject("mensagem", "Prato cadastrado com sucesso");
+		mv.addObject("prato", new Prato());
 		return mv;
 	}
 	
@@ -45,6 +46,25 @@ public class PratoController {
 		List<Prato> pratos = pratoService.retornarPratos();
 		ModelAndView mv = new ModelAndView("listarPratos");
 		mv.addObject("listaPratos", pratos);
+		return mv;
+	}
+	
+	@PostMapping("/atualizar")
+	public ModelAndView atualizar(@Validated Prato prato, BindingResult result, @RequestParam(value="imagem") MultipartFile imagem) {
+		ModelAndView mv = new ModelAndView("atualizarPratos");
+		if(result.hasErrors()) {
+			return mv;
+		}
+		pratoService.atualizar(prato, imagem);
+		mv.addObject("mensagem", "Prato atualizado com sucesso");
+		return mv;
+	}
+	
+	@RequestMapping("/atualizar/{id}")
+	public ModelAndView atualizar(@PathVariable Long id) {
+		Prato prato = pratoService.obterPrato(id);
+		ModelAndView mv = new ModelAndView("atualizarPratos");
+		mv.addObject("prato", prato);
 		return mv;
 	}
 	

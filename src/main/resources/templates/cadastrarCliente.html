@@ -2,11 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Cadastrar Pratos</title>
+<title>Cadastrar</title>
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 </head>
 <body>
-    <form action="/prato/cadastrar" method="POST" th:object="${prato}" enctype="multipart/form-data">
+    <form action="/cliente/cadastrar" method="POST" th:object="${cliente}" enctype="multipart/form-data">
 		<div class="alert alert-success" role="alert" th:if="${!#strings.isEmpty(mensagem)}">
 			<span th:text="${mensagem}"></span>
 		</div>
@@ -17,8 +17,11 @@
 		</div>
 		<input type="hidden" th:field="*{id}" />
 		<label>Nome: </label><input type="text" th:field="*{nome}"><br>
-		<label>Imagem: </label><input type="file" name="imagem"><br>
-		<label>Preço: </label><input type="text" th:field="*{preco}"><br>		
+		<label>CPF: </label><input type="text" th:field="*{cpf}"><br>
+		<label>Endereço: </label><input type="text" th:field="*{endereco}"><br>
+		<label>Data de Nascimento: </label><input type="text" th:field="*{dataNascimento}"><br>
+		<label>Email: </label><input type="email" th:field="*{email}"><br>
+		<label>senha: </label><input type="password" th:field="*{senha}"><br>			
 		<input type="submit" value="Cadastrar">
 	</form>
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>

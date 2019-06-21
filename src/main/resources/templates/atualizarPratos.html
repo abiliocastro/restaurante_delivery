@@ -2,11 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Cadastrar Pratos</title>
+<title>Atualizar Pratos</title>
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 </head>
 <body>
-    <form action="/prato/cadastrar" method="POST" th:object="${prato}" enctype="multipart/form-data">
+    <form action="/prato/atualizar" method="POST" th:object="${prato}" enctype="multipart/form-data">
 		<div class="alert alert-success" role="alert" th:if="${!#strings.isEmpty(mensagem)}">
 			<span th:text="${mensagem}"></span>
 		</div>
@@ -19,7 +19,7 @@
 		<label>Nome: </label><input type="text" th:field="*{nome}"><br>
 		<label>Imagem: </label><input type="file" name="imagem"><br>
 		<label>Preço: </label><input type="text" th:field="*{preco}"><br>		
-		<input type="submit" value="Cadastrar">
+		<input type="submit" value="Atualizar">
 	</form>
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 </body>

@@ -18,5 +18,42 @@ public class AulaFileUtils {
 		}
 		
 	}
+	
+	public static void renomearImagem(String nomeAntigo, String novoNome) {
+	    try {
+			FileUtils.moveFile(
+			  FileUtils.getFile(nomeAntigo), 
+			  FileUtils.getFile(novoNome));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void subtituirImagem(String caminhoAntigo, String novoCaminho, MultipartFile novaImagem) {
+	    try {
+	    	FileUtils.touch(new File(caminhoAntigo));
+	        File fileToDelete = FileUtils.getFile(caminhoAntigo);
+	        FileUtils.deleteQuietly(fileToDelete);
+	        
+	        File file = new File(novoCaminho);
+	        FileUtils.writeByteArrayToFile(file, novaImagem.getBytes());
+	        
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void deletarImagem(String caminho) {
+	    try {
+	    	FileUtils.touch(new File(caminho));
+	        File fileToDelete = FileUtils.getFile(caminho);
+	        FileUtils.deleteQuietly(fileToDelete);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }

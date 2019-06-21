@@ -1,0 +1,322 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('../font/Lato-Regular.ttf');
+}
+
+#logo-container {
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 141px;
+    width: 200px;
+    background-image: url("../img/zb-logo.png");
+    background-repeat: no-repeat;
+}
+
+#logo-container:hover {
+    background-image: url("../img/zb-logo-ac.png");
+    cursor: pointer;
+}
+
+#logo-container a {
+    height: 141px;
+    width: 200px;
+    display: block;
+}
+
+#menu-container {
+    text-align: center;
+    background-color: #ff2a2a;
+    height: 70px;
+    margin-top: 20px;
+}
+
+#menu {
+    display: none;
+    background-color: #ff2a2a;
+    z-index: 9999;
+    height: 210px;
+    margin-top: -3px; 
+}
+
+#menu-butao {
+    width: 30px;
+    height: 70px;
+    display: inline-block;
+    background-image: url("../img/menu-button.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+
+#menu-butao:hover {
+    cursor: pointer;
+}
+
+#menu a {
+    float: left;
+    width: 100%;
+    display: block;
+    padding: 25px 0 25px 0;
+    text-decoration: none;
+    color: #ffffff;
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+#menu a.active {
+    background-color: #ffffff;
+    color: #ff2a2a;
+}
+
+.pratos-container {
+    overflow: auto;
+    padding: 20px;
+    background-color: #ff9955;
+}
+
+h1, h2 {
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+}
+
+h1.titulo1 {
+    margin: auto;
+    display: inline;
+    color: #ffffff;
+    font-size: 20px; 
+    text-align: center;
+}
+
+.titulo {
+    text-align: center;
+}
+
+.titulo-conteudo {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.titulo-conteudo hr {
+    background-color: #ffffff;
+    width: 33%;
+    height: 2px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    display: inline-block;
+    border: none;
+
+}
+
+#pratos {
+    font-size: 0;
+    text-align: center;
+}
+
+.prato {
+    background-color: #ffffff;
+    padding: 10px;
+    margin: 5px;
+    display: inline-block;
+    width: 200px;
+    transition: all .5s ease-in-out;
+}
+
+.prato:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+    cursor: pointer;
+}
+
+.prato img {
+    width: 100%;
+}
+
+.prato h1, h2 {
+    font-size: 15px;
+}
+
+h1.nome-prato {
+    color: #000000;
+    padding: 10px;
+}
+
+h2.preco-prato {
+    color: #000000;
+    font-weight: bold;
+}
+
+#ver-mais {
+    display: inline-block;
+    color: #000000;
+    padding: 10px;
+    font-size: 15px;
+    /* clear: left; */
+    cursor: pointer;
+}
+
+.escondido {
+    display: none;
+}
+
+.sobre-container {
+    padding: 20px;
+    background-color: #ff9955;
+    overflow: auto;
+    text-align: center;
+    font-size: 0px;
+}
+
+#sobre-logo {
+    width: 27.7%;
+    margin: 10px 20px 10px 10px;
+    padding: 20px;
+    display: inline-block;
+    background: #ffffff;
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #000000;
+    line-height: 25px;
+    text-align: justify;
+    vertical-align: top;
+}
+
+#sobre-logo img {
+    width: 100%;
+}
+
+#sobre-descricao {
+    width: 50%;
+    margin: 10px;
+    padding: 20px;
+    display: inline-block;
+    background: #ffffff;
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #000000;
+    line-height: 25px;
+    text-align: justify;
+    vertical-align: top;
+}
+
+#sobre-descricao p {
+    display: inline-block;
+}
+
+.form-container {
+    width: 100%;
+    margin: auto;
+}
+
+input[type=text], 
+input[type=tel], 
+input[type=submit],
+textarea {
+    box-sizing: border-box;
+    width: 100%;
+    outline: none;
+    padding: 10px;
+    margin: 10px 0 10px 0;
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    border: 0;
+}
+
+input[type=submit] {
+    background-color: #ff2a2a;
+    color: #ffffff;
+}
+
+footer {
+    background: #000000;
+    overflow: auto;
+}
+
+.footer-col {
+    float: left;
+    width: 100%;
+    text-align: center;
+    line-height: 25px;
+    padding: 100px 0 100px 0;
+}
+
+.footer-col h1, h2 {
+    color: #ffffff;
+}
+
+.footer-col h1 {
+    font-weight: bold;
+}
+
+.ui-widget {
+    font-family: 'Lato', Arial, Helvetica, sans-serif; 
+}
+
+.ui-widget.ui-widget-content {
+    border: none; 
+}
+
+.ui-widget-content {
+    color: #ffffff; 
+}
+
+.ui-corner-all {
+    border-radius: 0px;
+}
+
+.ui-widget-shadow {
+    -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, .5);;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .5);;
+}
+
+.ui-tooltip {
+    background-color: #ff2a2a;
+}

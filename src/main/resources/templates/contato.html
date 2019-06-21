@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contato | Zé Bagunça - A Melhor Galinha Caipira da Região</title>
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <link rel="stylesheet" media="screen and (min-width: 601px)" href="css/estilo.css">
+    <link rel="stylesheet" media="screen and (max-width: 600px)" href="css/estilo_pequeno.css">
+    <script src="js/jquery-3.4.0.min.js"></script>
+    <script src="js/jquery.inputmask.bundle.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+</head>
+<body>
+    <header id="barra-topo">
+        <div id="logo-container"><a href="/"></a></div>
+        <div id="menu-container">
+            <div id="menu-butao"></div>
+            <nav id="menu">
+                <a href="/pratos">PRATOS</a>
+                <a class="active" href="/contato">CONTATO</a>
+                <a href="/sobre">SOBRE</a>
+            </nav>
+        </div>
+    </header>
+    <section class="pratos-container">
+        <div class="titulo">
+            <div class="titulo-conteudo">
+                <h1 class="titulo1">ENTRE EM CONTATO CONOSCO</h1><br>
+            </div>
+        </div> 
+        <div class="form-container">
+            <form>
+                <input type="text" placeholder="Nome" name="nome"><br>
+                <input id="email" type="text" title="Digite aqui o seu melhor e-mail para entrarmos em contato" placeholder="E-mail" name="email"><br>
+                <input id="telefone" type="tel" placeholder="Telefone" name="telefone"><br>
+                <textarea name="mensagem" placeholder="Mensagem" cols="30" rows="10"></textarea><br>
+                <input type="submit" value="Enviar">
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-col">
+            <h1>Zé Bagunça</h1>
+            <h2>A melhor galinha caipira da região</h2>    
+        </div>
+        <div class="footer-col">
+            <h2>Fundação</h2>
+            <h1>6 de setembro de 1969</h1>
+        </div>
+        <div class="footer-col">
+            <h2>Telefone</h2>
+            <h1>(69) 6969-8888</h1>
+        </div>
+        <div class="footer-col">
+            <h2>Desenvolvido por</h2>
+            <h1>Abilio Castro</h1>
+        </div>
+    </footer>
+    <script src="js/efeitos.js"></script>
+    <script src="js/mascara.js"></script>
+    <script src="js/widget.js"></script>
+</body>
+</html>

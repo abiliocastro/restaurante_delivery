@@ -38,5 +38,12 @@ public class GerenteController {
 		ModelAndView mv = new ModelAndView("cadastrarGerente");
 		return mv;
 	}
+	
+	@RequestMapping("/deletar")
+	public ModelAndView deletar() {
+		gerenteService.excluir(23L);
+		ModelAndView mv = new ModelAndView("cadastrarGerente");
+		return mv;
+	}
 
 }

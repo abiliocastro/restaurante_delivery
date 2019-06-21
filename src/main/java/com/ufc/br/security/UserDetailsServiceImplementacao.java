@@ -1,6 +1,7 @@
 package com.ufc.br.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -20,7 +21,7 @@ public class UserDetailsServiceImplementacao implements UserDetailsService {
 		if(usuario == null) {
 			throw new UsernameNotFoundException("Usuário não encontrado");
 		}
-		return usuario;
+		return new User(usuario.getUsername(), usuario.getPassword(), true, true, true, true, usuario.getAuthorities());
 	}
 	
 }

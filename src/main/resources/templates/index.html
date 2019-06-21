@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.springframework.org/security/tags">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Página Inicial | Zé Bagunça - A Melhor Galinha Caipira da Região</title>
+    <link rel="stylesheet" media="screen and (min-width: 601px)" href="css/estilo.css">
+    <link rel="stylesheet" media="screen and (max-width: 600px)" href="css/estilo_pequeno.css">
+    <script src="js/jquery-3.4.0.min.js"></script>
+</head>
+<body>
+    <header id="barra-topo">
+        <div id="logo-container"><a href="/"></a></div>
+        <div id="menu-container">
+            <div id="menu-butao"></div>
+            <nav id="menu">
+                <a href="/pratos">PRATOS</a>
+                <a href="/contato">CONTATO</a>
+                <a href="/sobre">SOBRE</a>
+                <a href="/logar" sec:authorize="!isAuthenticated()">ENTRAR</a>
+                <a href="/cliente/cadastrar" sec:authorize="!isAuthenticated()">CADASTRAR</a>
+                <a href="/logout" sec:authorize="hasRole('CLIENTE')">SAIR</a>
+            </nav>
+        </div>
+    </header>
+    <section class="pratos-container">
+        <div class="titulo">
+            <div class="titulo-conteudo">
+                <h1 class="titulo1">PRATOS DO DIA</h1><br>
+                <hr>
+            </div>
+        </div>
+        <div id="pratos">
+            <div th:each = "prato : ${listaPratos}" class="prato">
+                <img th:src="@{'/images/'+${prato.nome}+.png}" alt="Imagem Galinha Caipira">
+                <h1 th:text="${prato.nome}" class="nome-prato"></h1>
+                <h2 th:text="@{'R$ '+${prato.preco}}" class="preco-prato">R$ 35,00</h2>
+                <a href="/cliente/cadastrar" sec:authorize="!isAuthenticated()">+Adicionar ao pedido</a>
+                <a href="/" sec:authorize="hasRole('CLIENTE')">+Adicionar ao pedido</a>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-col">
+            <h1>Zé Bagunça</h1>
+            <h2>A melhor galinha caipira da região</h2>    
+        </div>
+        <div class="footer-col">
+            <h2>Fundação</h2>
+            <h1>6 de setembro de 1969</h1>
+        </div>
+        <div class="footer-col">
+            <h2>Telefone</h2>
+            <h1>(69) 6969-8888</h1>
+        </div>
+        <div class="footer-col">
+            <h2>Desenvolvido por</h2>
+            <h1>Abilio Castro</h1>
+        </div>
+    </footer>
+    <script src="js/efeitos.js"></script>
+</body>
+</html>
