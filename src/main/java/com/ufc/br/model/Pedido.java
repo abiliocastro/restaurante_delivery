@@ -1,8 +1,11 @@
 package com.ufc.br.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,8 +25,15 @@ public class Pedido {
 	private Cliente cliente;
 	@ManyToMany(targetEntity = Prato.class)
 	private Set<Prato> pratos;
-	@OneToMany(targetEntity = Item.class)
-	private Set<Item> itens;
+	@OneToMany(targetEntity = Item.class, 
+			cascade = CascadeType.ALL, 
+			fetch = FetchType.EAGER,
+			mappedBy = "pedido")
+	private Set<Item> itens = new HashSet<Item>();
+	
+	public Pedido() {
+		itens = new HashSet<Item>();
+	}
 	
 	public String getStatus() {
 		return status;
@@ -73,6 +83,8 @@ public class Pedido {
 		this.itens = itens;
 	}
 	
-	
-	
+	public void addItem(Item item) {
+		this.itens.add(item);
+	}
+		
 }

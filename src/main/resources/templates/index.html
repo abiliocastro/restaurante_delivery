@@ -21,6 +21,7 @@
                 <a href="/sobre">SOBRE</a>
                 <a href="/logar" sec:authorize="!isAuthenticated()">ENTRAR</a>
                 <a href="/cliente/cadastrar" sec:authorize="!isAuthenticated()">CADASTRAR</a>
+                <a href="/pedido/atual" sec:authorize="hasRole('CLIENTE')">PEDIDO</a>
                 <a href="/logout" sec:authorize="hasRole('CLIENTE')">SAIR</a>
             </nav>
         </div>
@@ -38,7 +39,7 @@
                 <h1 th:text="${prato.nome}" class="nome-prato"></h1>
                 <h2 th:text="@{'R$ '+${prato.preco}}" class="preco-prato">R$ 35,00</h2>
                 <a href="/cliente/cadastrar" sec:authorize="!isAuthenticated()">+Adicionar ao pedido</a>
-                <a href="/" sec:authorize="hasRole('CLIENTE')">+Adicionar ao pedido</a>
+                <a th:href="@{/pedido/adicionar/{id}(id = ${prato.id})}" sec:authorize="hasRole('CLIENTE')">+Adicionar ao pedido</a>
             </div>
         </div>
     </section>

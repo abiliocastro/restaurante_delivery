@@ -22,4 +22,8 @@ public class ClienteService {
 		cliente.addRole(roleCliente);
 		iClienteRepository.save(cliente);
 	}
+	
+	public Cliente obterCliente(String email) {
+		return iClienteRepository.findByEmail(email);
+	}
 }

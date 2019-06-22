@@ -1,6 +1,7 @@
 package com.ufc.br.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,11 +15,20 @@ public class Item {
 	private long id;
 	private int quantidade;
 	
-	@ManyToOne(targetEntity = Pedido.class)
+	@ManyToOne(targetEntity = Pedido.class, fetch = FetchType.EAGER)
 	private Pedido pedido;
 	
 	@OneToOne
 	private Prato prato;
+	
+	public Item() {
+		
+	}
+	
+	public Item(Prato prato) {
+		this.prato = prato;
+		this.quantidade = 1;
+	}
 
 	public int getQuantidade() {
 		return quantidade;

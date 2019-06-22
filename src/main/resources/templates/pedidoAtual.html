@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Pedido Atual</title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"> 
+</head>
+<body>
+	<table th:if="${pedido != null}" class="table">
+	  <thead>
+	    <tr>
+	      <th scope="col">Prato</th>
+	      <th scope="col">Preço</th>
+	      <th scope="col">Quantidade</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr th:each = "item : ${pedido.itens}">
+          <td th:text="${item.prato.nome}"></td>
+          <td th:text="@{'R$ '+${item.prato.preco}}"></td>
+          <td th:text="${item.quantidade}"></td>
+	    </tr>
+	  </tbody>
+    </table>
+    <div th:if="${pedido == null}">
+    	<h1>Você ainda não abriu nenhum pedido :(</h1>
+    	<h2>Veja <a href="/">aqui</a> nossas maravilhosas opções de pratos</h2>
+    </div>
+</body>
+</html>
