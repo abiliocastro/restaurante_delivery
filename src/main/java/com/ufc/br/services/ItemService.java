@@ -14,4 +14,8 @@ public class ItemService {
 	public void cadastrar(Item item) {
 		iItemRepository.save(item);
 	}
+	
+	public void deletar(Long id) {
+		iItemRepository.deleteById(id);
+	}
 }

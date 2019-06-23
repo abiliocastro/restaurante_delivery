@@ -33,8 +33,20 @@ public class Pedido {
 	
 	public Pedido() {
 		itens = new HashSet<Item>();
+		totalPedido = 0F;
+		status = "aberto";
 	}
 	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+
 	public String getStatus() {
 		return status;
 	}
@@ -52,11 +64,24 @@ public class Pedido {
 	}
 	
 	public float getTotalPedido() {
+		for (Item item : itens) {
+			totalPedido += item.getQuantidade() * item.getPrato().getPreco();
+		}
+		return totalPedido;
+	}
+	
+	public float getTotalPedidoFinalizado() {
 		return totalPedido;
 	}
 	
 	public void setTotalPedido(float totalPedido) {
 		this.totalPedido = totalPedido;
+	}
+	
+	public void atualizaTotal() {
+		for (Item item : itens) {
+			totalPedido += item.getQuantidade() * item.getPrato().getPreco();
+		}
 	}
 
 	public Set<Prato> getPratos() {

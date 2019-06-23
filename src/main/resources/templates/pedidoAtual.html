@@ -3,28 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <title>Pedido Atual</title>
-<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"> 
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<script src="../js/jquery-3.4.0.min.js"></script> 
 </head>
 <body>
-	<table th:if="${pedido != null}" class="table">
-	  <thead>
-	    <tr>
-	      <th scope="col">Prato</th>
-	      <th scope="col">Preço</th>
-	      <th scope="col">Quantidade</th>
-	    </tr>
-	  </thead>
-	  <tbody>
-	    <tr th:each = "item : ${pedido.itens}">
-          <td th:text="${item.prato.nome}"></td>
-          <td th:text="@{'R$ '+${item.prato.preco}}"></td>
-          <td th:text="${item.quantidade}"></td>
-	    </tr>
-	  </tbody>
-    </table>
+	<div th:if="${pedido != null}">
+		<h1>Esse é seu pedido atual</h1>
+    	<div th:if="${not #sets.isEmpty(pedido.itens)}">
+			<form action="/pedido/finalizar" method="POST" enctype="multipart/form-data">    		
+	    		<h2>Fique a vontade para gerenciar o seu pedido</h2>
+				<table class="table">
+				  <thead>
+				    <tr>
+				      <th scope="col">Prato</th>
+				      <th scope="col">Preço</th>
+				      <th scope="col">Quantidade</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr th:each = "item : ${pedido.itens}">
+			          <td th:text="${item.prato.nome}"></td>
+			          <td th:text="@{'R$ '+${item.prato.preco}}"></td>
+			          <td th:text="${item.quantidade}"></td>
+			          <td>
+				      	<a th:href="@{/pedido/deletar/{codigo}(codigo = ${item.id})}">
+				      		<button type="button" class="btn btn-danger">Deletar</button>
+				      	</a> 
+				      </td>
+				    </tr>
+				  </tbody>
+			    </table>
+			    <h2 th:text="@{'Total do Pedido: R$ '+${#numbers.formatDecimal(pedido.totalPedido,1,2)}}"></h2><br>
+			    <button id="btn-continuar" type="button" class="btn btn-primary">Continuar</button>
+			    <div id="endereco-pedido">
+			    	<h1>Insira o endereço de entrega</h1><br>
+			    	<label>Endereço: </label><input required="required" type="text" name="enderecoEntrega"><br>
+			    	<button type="submit" class="btn btn-danger">Finalizar Pedido</button>
+			    </div>
+		    </form>
+    	</div>
+    	<div th:if="${#sets.isEmpty(pedido.itens)}">
+    		<h2>Ele está aberto mas não tem itens adicionados.</h2>
+    		<h2>Veja <a href="/">aqui</a> nossas maravilhosas opções de pratos</h2>
+    	</div>
+	</div>
     <div th:if="${pedido == null}">
-    	<h1>Você ainda não abriu nenhum pedido :(</h1>
+    	<h1>Você não possui pedidos em aberto no momento :(</h1>
     	<h2>Veja <a href="/">aqui</a> nossas maravilhosas opções de pratos</h2>
     </div>
+    <div>
+    	<a href="/pedido/atual">Ver Pedidos Finalizados</a>
+    	<a href="/">Continuar Comprando</a>
+    </div>
+    <script src="../js/efeitos.js"></script>
 </body>
 </html>
