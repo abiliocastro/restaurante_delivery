@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Pedidos Finalizados</title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"> 
+</head>
+<body>
+	<div th:if="${not #lists.isEmpty(listaFinalizados)}">
+		<h1>Esses são seus pedidos finalizados</h1>
+		<table class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col">ID</th>
+		      <th scope="col">Endereço de Entrega</th>
+		      <th scope="col">Total do Pedido</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr th:each = "pedido : ${listaFinalizados}">
+		      <td th:text="${pedido.id}"></td>
+	          <td th:text="${pedido.enderecoEntrega}"></td>
+	          <td th:text="@{'R$ '+${#numbers.formatDecimal(pedido.totalPedido,1,2)}}"></td>          
+	          <!-- <td>
+		      	<a th:href="@{/prato/atualizar/{codigo}(codigo = ${prato.id})}">
+		      		<button type="button" class="btn btn-primary">Atualizar</button>
+		      	</a> 
+		      </td>  -->
+		    </tr>
+		  </tbody>
+	    </table>
+	</div>
+	<div th:if="${#lists.isEmpty(listaFinalizados)}">
+		<h1>Você não possui pedidos finalizados</h1>
+	</div>
+	<div>
+    	<a href="/pedido/atual">Voltar ao Pedido Atual</a>
+    	<a href="/">Continuar Comprando</a>
+    </div>
+	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+</body>
+</html>

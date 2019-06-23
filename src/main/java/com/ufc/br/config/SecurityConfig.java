@@ -40,6 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/prato/listar").hasRole("GERENTE")
 		.antMatchers("/prato/deletar/**").hasRole("GERENTE")
 		.antMatchers("/pedido/atual").hasRole("CLIENTE")
+		.antMatchers("/pedido/finalizados").hasRole("CLIENTE")
 		.antMatchers("/").permitAll()
 		.antMatchers("/pratos").permitAll()
 		.antMatchers("/contato").permitAll()

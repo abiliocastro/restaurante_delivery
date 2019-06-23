@@ -1,5 +1,7 @@
 package com.ufc.br.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -66,6 +68,15 @@ public class PedidoController {
 		pedido.setEnderecoEntrega(enderecoEntrega);
 		pedidoService.finalizar(pedido);
 		ModelAndView mv = new ModelAndView("redirect:/pedido/atual");
+		return mv;
+	}
+	
+	@RequestMapping("/finalizados")
+	public ModelAndView finalizarPedido() {
+		Cliente cliente = this.obterClienteAtual();
+		List<Pedido> pedidosFinalizados = pedidoService.obterFinalizados(cliente);
+		ModelAndView mv = new ModelAndView("pedidosFinalizados");
+		mv.addObject("listaFinalizados", pedidosFinalizados);
 		return mv;
 	}
 	

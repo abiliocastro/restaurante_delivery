@@ -1,5 +1,6 @@
 package com.ufc.br.services;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,10 @@ public class PedidoService {
 	@Transactional
 	public Pedido obterPedidoAtual(Cliente cliente) {
 		return iPedidoRepository.findByStatusAndCliente("aberto", cliente);
+	}
+	
+	public List<Pedido> obterFinalizados(Cliente cliente) {
+		return iPedidoRepository.findAllByStatusAndCliente("finalizado", cliente);
 	}
 	
 	// Quando um pedido aberto já existe
