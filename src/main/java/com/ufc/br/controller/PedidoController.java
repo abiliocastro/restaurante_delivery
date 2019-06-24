@@ -2,7 +2,11 @@ package com.ufc.br.controller;
 
 import java.util.List;
 
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -24,6 +28,9 @@ public class PedidoController {
 	
 	@Autowired
 	ClienteService clienteService;
+	
+	@Autowired 
+	JavaMailSender mailSender;
 	
 	@RequestMapping("/adicionar/{id}")
 	public ModelAndView adicionarItem(@PathVariable Long id) {
@@ -67,6 +74,7 @@ public class PedidoController {
 		Pedido pedido = pedidoService.obterPedidoAtual(cliente);
 		pedido.setEnderecoEntrega(enderecoEntrega);
 		pedidoService.finalizar(pedido);
+		this.enviarEmail();
 		ModelAndView mv = new ModelAndView("redirect:/pedido/atual");
 		return mv;
 	}
@@ -78,6 +86,23 @@ public class PedidoController {
 		ModelAndView mv = new ModelAndView("pedidosFinalizados");
 		mv.addObject("listaFinalizados", pedidosFinalizados);
 		return mv;
+	}
+	
+	private void enviarEmail() {
+		try {
+            MimeMessage mail = mailSender.createMimeMessage();
+
+            MimeMessageHelper helper = new MimeMessageHelper( mail );
+            helper.setTo("castro.abilio@gmail.com");
+            helper.setSubject("Confirmação de Pedido Finalizado");
+            helper.setText("<p>Olá seu pedido foi confirmado e será enviado</p>", true);
+            mailSender.send(mail);
+
+            System.out.println("EMAIL: Enviado");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("EMAIL: Erro ao enviar e-mail");
+        }
 	}
 	
 	private Cliente obterClienteAtual() {
