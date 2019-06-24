@@ -2,6 +2,7 @@ HELP.md
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 /src/main/resources/application.properties
+/src/main/resources/application.properties.local
 /src/main/resources/application.properties.production
 /images
 
