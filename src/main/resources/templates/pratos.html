@@ -19,6 +19,10 @@
                 <a class="active" href="/pratos">PRATOS</a>
                 <a href="/contato">CONTATO</a>
                 <a href="/sobre">SOBRE</a>
+                <a href="/logar" sec:authorize="!isAuthenticated()">ENTRAR</a>
+                <a href="/cliente/cadastrar" sec:authorize="!isAuthenticated()">CADASTRAR</a>
+                <a href="/pedido/atual" sec:authorize="hasRole('CLIENTE')">PEDIDO</a>
+                <a href="/logout" sec:authorize="hasRole('CLIENTE')">SAIR</a>
             </nav>
         </div>
     </header>

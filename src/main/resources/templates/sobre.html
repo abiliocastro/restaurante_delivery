@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en" 
+	  xmlns:sec="http://www.springframework.org/security/tags">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +19,10 @@
                 <a href="/pratos">PRATOS</a>
                 <a href="/contato">CONTATO</a>
                 <a class="active" href="/sobre">SOBRE</a>
+                <a href="/logar" sec:authorize="!isAuthenticated()">ENTRAR</a>
+                <a href="/cliente/cadastrar" sec:authorize="!isAuthenticated()">CADASTRAR</a>
+                <a href="/pedido/atual" sec:authorize="hasRole('CLIENTE')">PEDIDO</a>
+                <a href="/logout" sec:authorize="hasRole('CLIENTE')">SAIR</a>
             </nav>
         </div>
     </header>
