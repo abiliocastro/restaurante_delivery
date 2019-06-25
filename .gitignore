@@ -4,7 +4,7 @@ HELP.md
 /src/main/resources/application.properties
 /src/main/resources/application.properties.local
 /src/main/resources/application.properties.production
-/images
+### /images
 
 ### STS ###
 .apt_generated
