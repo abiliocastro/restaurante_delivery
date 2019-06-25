@@ -45,8 +45,6 @@ public class Pedido {
 		this.id = id;
 	}
 
-
-
 	public String getStatus() {
 		return status;
 	}
